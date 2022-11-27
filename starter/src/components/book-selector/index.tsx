@@ -11,11 +11,11 @@ const BookSelector = ({ shelf, handleSelectShelf }: IBookSelector) => {
     ShelfOption.READ,
   ];
 
-  const setBookListSelectOptions = () => {
+  const setBookListSelectOptions = (): void => {
     options = [ShelfOption.MOVE_TO, ...options, ShelfOption.NONE];
   };
 
-  const setSearchedBooksSelectOptions = () => {
+  const setSearchedBooksSelectOptions = (): void => {
     options = [ShelfOption.ADD_TO, ...options];
   };
 
