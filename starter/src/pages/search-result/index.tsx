@@ -16,29 +16,10 @@ const SearchResult = () => {
   const [error, setError] = useState<boolean>(false);
   const [queryValue, setQuery] = useState<string>("");
   const [searchedBookList, setSearchedBookList] = useState<IBook[]>([]);
-  const [booksInShelf, setBooksInShelf] = useState<IBook[]>(
-    useLocation().state || []
-  );
+  const [booksInShelf] = useState(useLocation().state || []);
 
   const handleSearch = (query: string): void => {
-    setQuery(query);
-  };
-
-  const searchBooks = async (query: string): Promise<void> => {
-    setError(false);
-    setFetching(true);
-    try {
-      const resp = await BooksAPI.search(query);
-      setFetching(false);
-      if (resp?.error) {
-        throw new Error(resp?.error);
-      }
-      setError(false);
-      setSearchedBookList(addShelfToBook(resp, booksInShelf));
-    } catch (error) {
-      setSearchedBookList([]);
-      setError(true);
-    }
+    setQuery(query.trimEnd());
   };
 
   const addShelfToBook = (
@@ -60,12 +41,29 @@ const SearchResult = () => {
   };
 
   useEffect(() => {
+    const searchBooks = async (query: string): Promise<void> => {
+      setError(false);
+      setFetching(true);
+      try {
+        const resp = await BooksAPI.search(query);
+        setFetching(false);
+        if (resp?.error) {
+          throw new Error(resp?.error);
+        }
+        setError(false);
+        setSearchedBookList(addShelfToBook(resp, booksInShelf));
+      } catch (error) {
+        setSearchedBookList([]);
+        setError(true);
+      }
+    };
+
     if (!queryValue) {
       setSearchedBookList([]);
     } else {
       searchBooks(queryValue);
     }
-  }, [queryValue]);
+  }, [queryValue, booksInShelf]);
 
   return (
     <div className="search-books">

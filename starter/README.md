@@ -4,7 +4,7 @@
 
 ## Getting started 🔨
 
-- Open temrinal in the folder `/starter`
+- Open terminal in the folder `/starter`
 - Run `npm install`
 - Run `npm start` for a dev server. Navigate to `http://localhost:3000/`.
 
