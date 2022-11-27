@@ -7,6 +7,12 @@ export class ShelfOption {
     disabled: true,
   };
 
+  public static ADD_TO: ShelfItem = {
+    value: "",
+    text: "Add to...",
+    disabled: true,
+  };
+
   public static CURRENTLY_READING: ShelfItem = {
     value: "currentlyReading",
     text: "Currently Reading",

@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 
 import Home from "./pages/home";
 import SearchResult from "./pages/search-result";
+
 import "./App.css";
 
 const App = () => {

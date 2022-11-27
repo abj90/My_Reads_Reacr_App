@@ -65,3 +65,7 @@ export interface IBookSelector {
   shelf: string;
   handleSelectShelf: (shelfSelected: string) => void;
 }
+
+export interface IBookList {
+  bookList: IBook[];
+}

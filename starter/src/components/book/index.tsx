@@ -17,13 +17,13 @@ const Book = ({ book, onUpdateBookShelf }: IBookComponent) => {
           style={{
             width: 128,
             height: 193,
-            backgroundImage: `url(${imageLinks.smallThumbnail})`,
+            backgroundImage: `url(${imageLinks?.smallThumbnail})`,
           }}
         ></div>
         <BookSelector shelf={shelf} handleSelectShelf={handleSelectShelf} />
       </div>
-      <div className="book-title">{title}</div>
-      {authors.map((author: string, index: number) => (
+      <div className="book-title">{title ? title : ""}</div>
+      {authors?.map((author: string, index: number) => (
         <div key={index} className="book-authors">
           {author}
         </div>
